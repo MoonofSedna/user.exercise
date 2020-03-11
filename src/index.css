@@ -5,9 +5,167 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(235, 148, 148)! important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1{
+  
+  text-align: center;
+  color: white;
+  font-size: 3rem! important;
+}
+
+h2{
+  text-align: center;
+  margin-top: 1rem! important;
+  margin-bottom: 2rem! important;
+}
+
+h4{
+  text-align: center;
+}
+
+p{
+  font-weight: bold;
+  line-height:1.1rem;
+}
+
+span{
+  font-weight: 400;
+}
+
+.img-logo{
+  margin:auto;
+  width: 40%;
+  display: block;
+}
+
+.form-user{
+  float: right;
+  position: absolute;
+}
+
+.btn-form-user{
+  float: right;
+}
+.card{
+  width:100%;
+  height: auto;
+  margin: auto;
+  
+  padding: 1rem;
+  border:none! important;
+  border-radius: 10px!important;
+  box-shadow: 2px 2px 20px rgb(99, 64, 64);
+  
+  
+}
+
+
+input{
+
+  background-color: transparent! important;
+  border-top: none ! important;
+  border-left: none ! important;
+  border-right: none ! important;
+  border-radius: 0%! important;
+}
+
+::-webkit-input-placeholder { color: rgb(255, 255, 255)!important; } 
+
+:-moz-placeholder { /* Firefox 18- */ color: rgb(255, 255, 255)!important; } 
+
+::-moz-placeholder { /* Firefox 19+ */ color: rgb(255, 255, 255)!important; } 
+
+:-ms-input-placeholder { color: rgb(255, 255, 255)!important; }
+
+.card-body{
+
+  height: 200px;
+}
+.card-menu{
+
+  width: auto;
+}
+
+.card-img-top{
+
+
+  width:90%! important;
+  
+
+}
+
+.btn-act{
+
+  width: auto;
+  
+}
+
+.btn-act:hover{
+  border-radius: 0! important;
+  background-color: rgb(243, 131, 156);
+  color:white! important;
+}
+
+.Modals{
+  overflow-y: scroll;
+  height: 70%;
+  width: 50%;;
+}
+
+.Modals::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+.Modals::-webkit-scrollbar-thumb {
+  background: #80da62;
+  border-radius: 4px;
+}
+
+.Modals::-webkit-scrollbar-thumb:hover {
+  background: #67b34e;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btns{
+ float:none;
+	text-align:center;
+}
+
+
+
+.contenedor{
+  padding: 0;
+}
+
+@media screen and (max-width: 1195px){
+
+  .card{
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-bottom: 2rem;
+  }
+
+  .card-body{
+
+    height: auto;
+  }
+
+  .contenedor{
+    padding: 2rem;
+  }
+
+}
+
+@media screen and (max-width: 411px){
+
+  .card-body{
+    padding-bottom: 3rem! important;
+    height: auto;
+    
+  }
+
 }
