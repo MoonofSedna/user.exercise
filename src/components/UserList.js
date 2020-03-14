@@ -70,20 +70,21 @@ import axios from 'axios';
             
 
             <div className="row m-auto" >
+
                 <div className=" mb-5 col-md-12">
                     <Bounce top>
                         <img src={imagen} alt="logo" className="img-logo" />
                     </Bounce>
-                    <div className="col-md-6 col-md-offset-6 form-user">
+                    <div className="col-md-6 offset-md-6">
                         {error ? <Error message = "All fields are required" /> :null}
-                    <button
-                        className="btn btn-info btn-form-user"
-                        onClick={() => setOpen(!open)}
-                        aria-controls="example-collapse-text"
-                        aria-expanded={open}
-                    >
-                    Add new user!
-                    </button>
+                        <button
+                            className="btn btn-info btn-form-user display-block"
+                            onClick={() => setOpen(!open)}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={open}
+                        >
+                            Add new user!
+                        </button>
                     <Collapse in={open}>
                         <div id="example-collapse-text">
                             <form onSubmit={SubmitUser} id="form">
@@ -99,14 +100,15 @@ import axios from 'axios';
                             </form>
                         </div>
                     </Collapse>
-                        
                     </div>
                 </div>
+                <div className="row">
                 {users.map(user => (
                         <Users
                         key={user.id}
                         user={user}/>
                 ))}
+                </div>
 
             </div>
         
