@@ -11,6 +11,9 @@ export const ModalContext = createContext();
         const [Infoalbum, saveInfoalbum] = useState({});
         const [Infotodos, saveInfotodos] = useState({});
         const [Infopost, saveInfopost] = useState({});
+        const [showalbums, Showalbums] = useState(false);
+        const [showposts, Showposts] = useState(false);
+        const [showtodos, Showtodos] = useState(false);
         const [ open, setOpen] = useState(false);
 
     
@@ -26,9 +29,9 @@ export const ModalContext = createContext();
             const url3= `https://jsonplaceholder.typicode.com/posts?userId=${getid}`;
 
             const [Infoalbum, Infotodos, Infopost] = await Promise.all([
-            axios(url),
-            axios(url2),
-            axios(url3)
+                axios(url),
+                axios(url2),
+                axios(url3)
             ]);
 
           saveInfoalbum(Infoalbum.data);
@@ -53,7 +56,15 @@ export const ModalContext = createContext();
             Infoalbum,
             saveInfoalbum,
             Infotodos,
+            saveInfotodos,
             Infopost,
+            saveInfopost,
+            showalbums,
+            Showalbums,
+            showposts, 
+            Showposts,
+            showtodos,
+            Showtodos,
             open,
             setOpen
         }}>
@@ -64,4 +75,4 @@ export const ModalContext = createContext();
 
     }
 
-    export default ModalProvider;
+export default ModalProvider;

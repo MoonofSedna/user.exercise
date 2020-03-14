@@ -1,92 +1,140 @@
 import React, {useContext, useState} from 'react';
 import Todo from './Todo';
+import Form from 'react-bootstrap/Form';
+import Collapse from 'react-bootstrap/Collapse';
+import Bounce from 'react-reveal/Bounce';
+import Error from '../Error';
+import imagen from '../../img/todo-1.png';
 import {ModalContext} from '../../context/ModalContext';
-import Modal from '@material-ui/core/Modal';
-import { makeStyles } from '@material-ui/core/styles';
-import Backdrop from '@material-ui/core/Backdrop';
+import axios from 'axios';
 
 
+    const Todos = () => {
+        
 
-function getModalStyle() {
-    const top = 50 ;
-    const left = 50;
+        const{Infotodos, saveInfotodos} = useContext(ModalContext);
 
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
-const useStyles = makeStyles(theme => ({
+        const [error, getError] = useState(false);
+        const [open, setOpen] = useState(false);
+        const [getdatatodo, getDataTodo] = useState({
+            title:'',
+            completed:''
+        });
 
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    paper: {
-        position: 'absolute',
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    },
-}));
+        const {title, completed} = getdatatodo;
 
-const Todos = () => {
-     //Set modal
+        const SubmitTodos = e => {
 
-     const [modalStyle] = useState(getModalStyle);
+            getDataTodo({
+                ...getdatatodo,
+                [e.target.name] : e.target.value
+            })
+        }
 
-    
+        const AddTodo = (newTodo) => {
 
-      /// Modal config ///
+            const NewTodos = [
+                newTodo,
+                ...Infotodos
+            ];
+            
+            saveInfotodos(NewTodos);
+        }
 
-      const classes= useStyles();
+        const SubmitTodo = async (e) => {
 
-    
-    const handleClose = () => {
-        setOpen(false);
+            e.preventDefault();
 
-    }
+            //Validate
 
-   /////////////////////////
+            if(title.trim() === '' || completed.trim() === ''){
+                getError(true);
+                return;
+            }
+                getError(false);
 
-    const{Infotodos, SaveGetID, open, setOpen} = useContext(ModalContext);
+            //Call Api
 
-    return ( 
+            const response = await axios.post (`https://jsonplaceholder.typicode.com/todos`, getdatatodo);
+
+            if (response.status === 200 || response.status === 201){
+
+                AddTodo(response.data);
+
+            }
+
+            setOpen(false);
+
+            getDataTodo({
+                title:'',
+                completed:''
+            });
 
 
-        <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        key ={SaveGetID}
-        onClose={() => {
-            SaveGetID(null);
-            handleClose();
-        }}
-                
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-                timeout: 500
-        }}>
-            <div style={modalStyle} className={`Modals ${classes.paper}`} >
-            <h4>Lista de Todos</h4>
-            {Infotodos.map(info => (
+        }
+
+        return ( 
+
+            <div className="row m-auto">
+                <div className="col-md-12">
+                    <Bounce top>
+                        <img src={imagen} className="mb-5 img-title" alt="TodoList"/>
+                    </Bounce>
+                    <div className="col-md-6 form-user-posts">
+                        {error ? <Error message= "All fields are required" /> : null}
+                        <button
+                            className="btn btn-info btn-form-user"
+                            onClick={() => setOpen(!open)}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={open}
+                        >
+                            Add new to do!
+                        </button>
+                        <Collapse in={open}>
+                            <div id="example-collapse-text">
+                                <form id="form" onSubmit={SubmitTodo}>
+                                    <Form.Group controlId="formBasicEmail">
+                                        <Form.Control className="input-2 mb-1" name="title" value={title}  type="text" placeholder="Task" onChange={SubmitTodos}/>
+                                        <Form.Group>
+                                            <Form.Label as="legend" className="input-2" column sm={2}>
+                                                    Status
+                                            </Form.Label>
+                                                    <Form.Check
+                                                        className="input-2"
+                                                        type="radio"
+                                                        name="completed"
+                                                        label="Complete"
+                                                        value="true"
+                                                        onChange={SubmitTodos}
+                                                    />
+                                                    <Form.Check
+                                                        className="input-2"
+                                                        type="radio"
+                                                        name="completed"
+                                                        label="Incomplete"
+                                                        value="false"
+                                                        onChange={SubmitTodos}
+                                                    />
+                                        </Form.Group>
+                                        <button type="submit" className="btn btn-info btn-block">Add</button>
+                                    </Form.Group>
+                                </form>
+                            </div>
+                        </Collapse>
+                    </div>
+                </div>
+
+            <div className="row mt-5">
+                {Infotodos.map(info => (
                     <Todo
-                    key={info.id}
-                    info={info}
-            />
-            ))}
-
-
+                        key={info.id}
+                        info={info}
+                    />
+                ))}
             </div>
-
-        </Modal>
-
-     );
-      
-}
+        </div>
+        );
+        
+    }
  
 export default Todos;

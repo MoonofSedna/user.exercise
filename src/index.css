@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(235, 148, 148)! important;
+  background-color: #ee9b9b! important;
 }
 
 h1{
@@ -34,6 +34,12 @@ span{
   font-weight: 400;
 }
 
+.alert{
+  background-color: #d42f53!important;
+  text-align: center;
+  color:white;
+}
+
 .img-logo{
   margin:auto;
   width: 40%;
@@ -44,13 +50,34 @@ span{
   float: right;
   position: absolute;
 }
+.input-1::-webkit-input-placeholder{
+  color: white!important;
+}
+.input-1::-moz-placeholder{
+  color: white!important;
+}
+.input-2{
+  color: #ef5475! important;
+}
+.input-2::-webkit-input-placeholder{
+  color: #ef5475!important;
+}
+.input-2::-moz-placeholder{
+  color: #ef5475!important;
+}
+
+
+.form-user-posts{
+  float: right;
+  position: absolute;
+}
 
 .btn-form-user{
   float: right;
 }
 .card{
   width:100%;
-  height: auto;
+  height: 240px;
   margin: auto;
   
   padding: 1rem;
@@ -71,17 +98,10 @@ input{
   border-radius: 0%! important;
 }
 
-::-webkit-input-placeholder { color: rgb(255, 255, 255)!important; } 
-
-:-moz-placeholder { /* Firefox 18- */ color: rgb(255, 255, 255)!important; } 
-
-::-moz-placeholder { /* Firefox 19+ */ color: rgb(255, 255, 255)!important; } 
-
-:-ms-input-placeholder { color: rgb(255, 255, 255)!important; }
 
 .card-body{
 
-  height: 200px;
+  height: auto;
 }
 .card-menu{
 
@@ -102,6 +122,20 @@ input{
   
 }
 
+.btn-info{
+
+  color: white;
+  background-color: #ef5475! important;
+  border: 1px solid #db5975! important ;
+}
+
+.btn-info:hover{
+
+  color: white;
+  background-color: #b83d58! important;
+  border: 1px solid #d84363! important ;
+}
+
 .btn-act:hover{
   border-radius: 0! important;
   background-color: rgb(243, 131, 156);
@@ -111,7 +145,8 @@ input{
 .Modals{
   overflow-y: scroll;
   height: 70%;
-  width: 50%;;
+  width: 60%;
+  padding: 3rem! important;
 }
 
 .Modals::-webkit-scrollbar {
@@ -120,52 +155,170 @@ input{
 }
 
 .Modals::-webkit-scrollbar-thumb {
-  background: #80da62;
+  background: rgb(243, 131, 156);
   border-radius: 4px;
 }
 
 .Modals::-webkit-scrollbar-thumb:hover {
-  background: #67b34e;
+  background: #ef5475;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.btns{
- float:none;
-	text-align:center;
+.carusel{
+  width: 85%;
+  height: 380px;
+  margin: auto;
+}
+
+.carusel img {
+  margin-top: 1rem;
+  width: 60%;
+  height: 380px;
 }
 
 
+.btns{
+  float:none;
+	text-align:center;
+}
 
 .contenedor{
   padding: 0;
 }
 
-@media screen and (max-width: 1195px){
+.card-body p::first-letter{
+    
+  text-transform: capitalize;
+}
+
+.card-header{
+  font-weight: 600;
+  background-color: #ee9b9b! important;
+  color: white;
+  
+}
+
+.card-header::first-letter{
+  
+  text-transform: capitalize;
+}
+
+.post-card{
+  box-shadow: none! important;
+  border: 1px solid #f097a6! important;
+  width: 90%;
+  height: auto;
+}
+
+.todo-card{
+  height: auto;
+  box-shadow: none! important;
+  background-color: #ffc1cb! important;
+  width: 90%;
+  padding-top: 1rem!important;
+}
+
+.todo-card p{
+
+  margin: 0! important;
+}
+
+.img-title{
+  width: 45%;
+  display: block;
+  margin: auto;
+}
+
+.img-icon{
+
+  width: 20%;
+  display: block;
+  margin: auto;
+
+}
+
+a{
+  color: #b83d58! important;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+a::hover{
+
+  text-decoration: none !important;
+  color: #b83d58!important;
+}
+
+
+
+@media screen and (max-width: 1024px){
 
   .card{
     width: 100%;
-    height: auto;
+    height: 270px;
     display: block;
     padding-bottom: 2rem;
   }
 
   .card-body{
-
     height: auto;
   }
 
+  .post-card{
+    box-shadow: none! important;
+    border: 1px solid #f097a6! important;
+    width: 90%;
+  }
+  .todo-card{
+
+    height: 110px! important;
+    padding: 1rem! important;
+
+  }
+
+  .radio{
+    color: black! important;
+  }
+
+  
   .contenedor{
     padding: 2rem;
   }
 
 }
 
-@media screen and (max-width: 411px){
+@media screen and (max-width: 736px){
 
-  .card-body{
+  .card{
     padding-bottom: 3rem! important;
     height: auto;
-    
+    margin:auto;
   }
 
+  .img-logo{
+
+    width: 90%;
+  }
+
+  .Modals{
+    width: 90%;
+  }
+
+  .Modals img{
+    width: 100%;
+  }
+
+  
+
 }
+
+input:focus, input.form-control:focus {
+
+  outline:none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+

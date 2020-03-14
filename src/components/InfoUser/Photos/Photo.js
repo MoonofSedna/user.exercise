@@ -1,18 +1,19 @@
 import React, {useContext} from 'react';
+import Carousel from 'react-bootstrap/Carousel';
 
-const Photo = ({photo}) => {
+    const Photo = ({photo}) => {
 
-    const {title, url, id} = photo;
+        const {title, url, id} = photo;
 
-    return ( 
+        return ( 
 
-       
-                <div className="carousel-item">
-                    <h2>{title}</h2>
-                    <img className="d-block w-100" src={url} alt={id}/>
-                </div>
-
-     );
-}
+            <div>
+                <img className="d-block w-100" src={url} alt={id}/>
+                <Carousel.Caption>
+                    <h3>{title}</h3>
+                </Carousel.Caption>
+            </div>
+        );
+    }
  
 export default Photo;
