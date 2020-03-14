@@ -10,7 +10,7 @@ export const UsersContext = createContext();
         //User State 
 
         const [users, saveUsers] = useState([]);
-        const [getdata, GetData] = useState({
+        const [getdata, saveData] = useState({
             name:'',
             username:'',
             email:'',
@@ -21,28 +21,24 @@ export const UsersContext = createContext();
 
         useEffect( () =>{
 
-            const GetTodo = async () => {
+            const getUsers = async () => {
                 const url = `https://jsonplaceholder.typicode.com/users`;
                 const result = await axios.get(url);
                 
                 saveUsers(result.data);
             }
 
-            GetTodo();
+            getUsers();
         
 
         }, []);
 
-
-        const SubmitUsers = e => {
-            GetData({
+        const submitUsers = e => {
+            saveData({
                 ...getdata,
                 [e.target.name] : e.target.value
             })
         }
-        
-    
-        
 
         return(
 
@@ -51,8 +47,8 @@ export const UsersContext = createContext();
                     users,
                     saveUsers,
                     getdata,
-                    GetData,
-                    SubmitUsers
+                    saveData,
+                    submitUsers
             }}>
                 {props.children}
             </UsersContext.Provider>

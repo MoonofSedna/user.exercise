@@ -9,7 +9,7 @@ import React from 'react';
 
             <div className="card post-card mb-3">
                 <div className="card-header">{title}</div>
-                <div className="card-body post-body-card">
+                <div className="card-body post-body-card display-block">
                     <p className="card-text">{body}</p>
                 </div>
             </div>

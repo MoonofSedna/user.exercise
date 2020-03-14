@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import Album from './Album';
 import Bounce from 'react-reveal/Bounce';
 import imagen from '../../img/album-1.png';

@@ -11,14 +11,14 @@ import axios from 'axios';
 
     const UserList = () => {
 
-        const {users, saveUsers, getdata, GetData,  SubmitUsers} = useContext (UsersContext);
+        const {users, saveUsers, getdata, saveData, submitUsers} = useContext (UsersContext);
 
         const {name, username, email, phone, website, city} = getdata;
 
         const [open, setOpen] = useState(false);
         const [error, getError] = useState(false);
 
-        function AgregarUsuario (NewUser) {
+        function addUser (NewUser) {
 
             const NewUsers = [ 
                 NewUser,
@@ -29,7 +29,7 @@ import axios from 'axios';
 
         }
 
-        const SubmitUser = async (e) => {
+        const submitUser = async (e) => {
 
             e.preventDefault();
 
@@ -49,11 +49,11 @@ import axios from 'axios';
 
             if (response.status === 200 || response.status === 201){
 
-                AgregarUsuario(response.data);
+                addUser(response.data);
 
             }
 
-            GetData({
+            saveData({
                 name:'',
                 username:'',
                 email:'',
@@ -87,14 +87,14 @@ import axios from 'axios';
                         </button>
                     <Collapse in={open}>
                         <div id="example-collapse-text">
-                            <form onSubmit={SubmitUser} id="form">
+                            <form onSubmit={submitUser} id="form">
                                 <Form.Group  controlId="formBasicEmail">
-                                    <Form.Control className="mb-1 input-1" name="name" value={name}  type="text" placeholder="Name" onChange={SubmitUsers}/>
-                                    <Form.Control className="mb-1 input-1" name="username" value={username}  type="text" placeholder="User Name" onChange={SubmitUsers} />
-                                    <Form.Control className="mb-1 input-1" name="email" value={email} type="text" placeholder="Email" onChange={SubmitUsers} />
-                                    <Form.Control className="mb-1 input-1" name="phone" value={phone} type="phone" placeholder="Phone" onChange={SubmitUsers}/>
-                                    <Form.Control className="mb-1 input-1" name="website" value={website}  type="text" placeholder="Website"onChange={SubmitUsers}/>
-                                    <Form.Control className="mb-1 input-1" name="city" value={city}  type="text" placeholder="City" onChange={SubmitUsers} />
+                                    <Form.Control className="mb-1 input-1" name="name" value={name}  type="text" placeholder="Name" onChange={submitUsers}/>
+                                    <Form.Control className="mb-1 input-1" name="username" value={username}  type="text" placeholder="User Name" onChange={submitUsers} />
+                                    <Form.Control className="mb-1 input-1" name="email" value={email} type="text" placeholder="Email" onChange={submitUsers} />
+                                    <Form.Control className="mb-1 input-1" name="phone" value={phone} type="phone" placeholder="Phone" onChange={submitUsers}/>
+                                    <Form.Control className="mb-1 input-1" name="website" value={website}  type="text" placeholder="Website"onChange={submitUsers}/>
+                                    <Form.Control className="mb-1 input-1" name="city" value={city}  type="text" placeholder="City" onChange={submitUsers} />
                                     <button type="submit" className="btn btn-info btn-block">Add</button>
                                 </Form.Group>
                             </form>
@@ -102,13 +102,13 @@ import axios from 'axios';
                     </Collapse>
                     </div>
                 </div>
-                <div className="row">
+                
                 {users.map(user => (
                         <Users
                         key={user.id}
                         user={user}/>
                 ))}
-                </div>
+                
 
             </div>
         

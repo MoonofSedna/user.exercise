@@ -3,7 +3,6 @@ import Albumes from './InfoUser/Albumes';
 import Posts from './InfoUser/Posts';
 import Todos from './InfoUser/Todos';
 import Photos from './InfoUser/Photos/Photos';
-import Zoom from 'react-reveal/Zoom';
 import {ModalContext} from '../context/ModalContext';
 import imagen from'../img/user.png';
 import {PhotosContext} from '../context/PhotosContext';
@@ -131,14 +130,14 @@ import Backdrop from '@material-ui/core/Backdrop';
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-8 pl-2">
-                            <div className="card-body text-left row">
-                                <div className="col-md-6">
+                        <div className="col-md-8">
+                            <div className="card-body text-left info-user row">
+                                <div className="col-md-6 col-sm-6">
                                     <p>User:<span> {name}</span></p>
                                     <p>UserName: <span>{username} </span></p>
                                     <p>Email: <span>{email}</span> </p>
                                 </div>
-                                <div className="col-md-6">
+                                <div className="col-md-6 col-sm-6">
                                     <p>Phone: <span>{phone} </span></p>
                                     <p>Website: <span>{website}</span></p>
                                 </div>

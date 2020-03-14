@@ -6,9 +6,9 @@ import React from 'react';
         var status;
 
         if (completed === true || completed === "true"){
-            var status= <p className= "text-success">Complete</p>
+             status= <p className= "text-success">Complete</p>
         } else {
-            var status = <p className="text-danger">Incomplete</p>
+             status = <p className="text-danger">Incomplete</p>
         }
         return ( 
             
