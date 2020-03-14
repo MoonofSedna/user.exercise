@@ -80,7 +80,7 @@ import axios from 'axios';
                     <Bounce top>
                         <img src={imagen} className="mb-5 img-title" alt="TodoList"/>
                     </Bounce>
-                    <div className="col-md-6 form-user-posts">
+                    <div className="col-md-6 col-md-offset-6 form-user-posts">
                         {error ? <Error message= "All fields are required" /> : null}
                         <button
                             className="btn btn-info btn-form-user"

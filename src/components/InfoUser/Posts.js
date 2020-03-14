@@ -78,7 +78,7 @@ import axios from 'axios';
                     <Bounce top>
                         <img className=" mb-5 img-title" src={imagen} alt="Posts List"/>
                     </Bounce>
-                    <div className="col-md-6 form-user-posts">
+                    <div className="col-md-6 col-md-offset-6 form-user-posts">
                         {error ? <Error message= "All fields are required" /> : null}
                         <button
                             className="btn btn-info btn-form-user float-right"
